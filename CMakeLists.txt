@@ -3,9 +3,15 @@ project(OpenGLTest)
 
 set(CMAKE_CXX_STANDARD 17)
 
+include_directories(
+        include
+)
+
 set(SOURCE_FILES
         main.cpp
-        )
+        TextureLoader.cpp)
+
+
 
 add_executable(OpenGLTest ${SOURCE_FILES})
 

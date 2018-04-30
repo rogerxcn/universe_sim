@@ -4,6 +4,26 @@
 Global variables
 --------------------------------------------------------------------------*/
 Info info;
+unsigned char* sunTexture;
+unsigned char* mercuryTexture;
+unsigned char* venusTexture;
+unsigned char* earthTexture;
+unsigned char* marsTexture;
+unsigned char* jupiterTexture;
+unsigned char* saturnTexture;
+unsigned char* uranusTexture;
+unsigned char* neptuneTexture;
+unsigned int height_mer, width_mer;
+unsigned int height_ear, width_ear;
+unsigned int height_j, width_j;
+unsigned int height_mars, width_mars;
+unsigned int height_nep, width_nep;
+unsigned int height_sat, width_sat;
+unsigned int height_sun,width_sun;
+unsigned int height_ur, width_ur;
+unsigned int height_ven, width_ven;
+
+GLuint textureID_sun, textureID_mer, textureID_j, textureID_ear, textureID_mars, textureID_nep, textureID_sat, textureID_ur, textureID_ven;
 
 /*--------------------------------------------------------------------------
 function headers
@@ -24,7 +44,8 @@ void draw_jupiter();
 void draw_saturn();
 void draw_uranus();
 void draw_neptune();
-
+void load_images();
+void deleteTexture();
 
 /*--------------------------------------------------------------------------
 Main function
@@ -36,6 +57,8 @@ int main(int argc, char *argv[]) {
     glutInitWindowSize (800, 600);
     glutInitWindowPosition (100, 100);
     glutCreateWindow ("Universe Sim");
+
+    load_images();
 
     memset(&info, 0, sizeof(Info));
     info.l_rad = 8.0;
@@ -51,6 +74,7 @@ int main(int argc, char *argv[]) {
 
     glutMainLoop();
 
+    deleteTexture();
     return 0;
 }
 
@@ -60,7 +84,7 @@ section for all display functions
 --------------------------------------------------------------------------*/
 void init() {
     glClearColor(0, 0, 0, 0);
-    calcLightPos();
+    //calcLightPos();
     glShadeModel(GL_SMOOTH);
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
@@ -69,7 +93,7 @@ void init() {
 }
 
 void display() {
-    calcLightPos();
+    //calcLightPos();
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
     draw_sun();
@@ -153,14 +177,6 @@ void keyboard(unsigned char key, int x, int y) {
         case 'd':
             info.axis_y += 0.1;
             info.axis_z -= 0.1;
-            break;
-        case 'W':
-        case 'w':
-            info.angle -= 20.0;
-            break;
-        case 'S':
-        case 's':
-            info.angle += 20.0;
             break;
     }
 
