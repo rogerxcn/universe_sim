@@ -24,7 +24,15 @@ typedef struct Info {
     float   saturn_year;
     float   uranus_year;
     float   neptune_year;
-    float   sun_year;
+    float   sun_day;
+    float   mercury_day;
+    float   venus_day;
+    float   mars_day;
+    float   jupiter_day;
+    float   saturn_day;
+    float   uranus_day;
+    float   neptune_day;
+
 
     double  x;
     double  y;

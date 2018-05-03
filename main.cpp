@@ -1,6 +1,5 @@
 #include "common.hpp"
 
-
 /*--------------------------------------------------------------------------
 Global variables
 --------------------------------------------------------------------------*/
@@ -109,8 +108,6 @@ int main(int argc, char *argv[]) {
     glutReshapeFunc(on_reshape);
     glutKeyboardFunc(keyboard);
 
-
-
     // Graphic rendering loop
     glutMainLoop();
 
@@ -153,7 +150,7 @@ void step() {
     // Increase time ticks for each planet
     info.year += 0.08;
     info.day += 10;
-    info.month += 0.03;
+    info.month += 0.33;
     info.mercury_year += 0.12;
     info.venus_year += 0.1;
     info.mars_year += 0.06;
@@ -161,6 +158,14 @@ void step() {
     info.saturn_year += 0.04;
     info.uranus_year += 0.03;
     info.neptune_year += 0.01;
+    info.sun_day += 100;
+    info.mercury_day += 200;
+    info.venus_day += 300;
+    info.mars_day += 10;
+    info.jupiter_day += 4;
+    info.saturn_day += 4;
+    info.uranus_day += 7;
+    info.neptune_day += 7;
 
     // Bound check
     info.year = (info.year > 360) ? (info.year-360) : info.year;
@@ -179,7 +184,7 @@ void step() {
 
 // The drawing functions are so lengthy that I put them to an individual cell for aesthetic consideration
 #include "draw.cpp"
-// It looks ugly to have a include statement in the middle of a block of code, doesn't it?
+
 
 /*---------------------------------------------------------------------------
 Section for all call backs
