@@ -2,9 +2,12 @@
 #define COMMON_HPP_
 
 #include <GL/glut.h>
-#include <math.h>
+#include <cmath>
 #include <iostream>
 #include <cstring>
+#include <windows.h>
+#include <cstdio>
+#include <TextureLoader.h>
 
 #define PI 3.1415927
 
